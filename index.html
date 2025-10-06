@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serendib Stays | Luxury Hotels in Sri Lanka</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav__logo">
+            <i class="fas fa-umbrella-beach"></i>
+            <span>Serendib Stays</span>
+        </div>
+        <ul class="nav__links">
+          <li class="link"><a href="#">Home</a></li>
+          <li class="link"><a href="#about">About Us</a></li>
+          <li class="link"><a href="#hotels">Hotels</a></li>
+          <li class="link"><a href="#destinations">Destinations</a></li>
+          <li class="link dropdown">
+              <a href="#">Transport <i class="ri-arrow-down-s-line"></i></a>
+              <ul class="dropdown-menu">
+                  <li><a href="https://seatreservation.railway.gov.lk/" target="_blank">Train</a></li>
+                  <li><a href="https://busseat.lk/" target="_blank">Bus</a></li>
+                  <li><a href="https://www.pickme.lk/">Three Wheel</a></li>
+                  <li><a href="https://www.pickme.lk/" target="_blank">Car</a></li>
+                  <li><a href="https://www.uber.com/lk/en/" target="_blank">Motor Cycle</a></li>
+              </ul>
+          </li>
+          <li class="link"><a href="#testimonials">Reviews</a></li>
+          <li class="link"><a href="#contact">Contact</a></li>
+          <li class="link dropdown">
+            <a href="#"><i class="ri-user-line"></i> Account <i class="ri-arrow-down-s-line"></i></a>
+            <ul class="dropdown-menu account-menu">
+                <li><a href="#" class="btn-login"><i class="ri-login-box-line"></i> Login</a></li>
+                <li><a href="#" class="btn-signup"><i class="ri-user-add-line"></i> Sign Up</a></li>
+            </ul>
+        </li>
+      </ul>
+
+      <!-- Login Modal -->
+<div class="modal-overlay" id="loginModal">
+  <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h3>Login</h3>
+      <form id="loginForm" action="login.php" method="POST">
+          <div class="form__group">
+              <input type="email" name="email" placeholder="Email" required>
+          </div>
+          <div class="form__group">
+              <input type="password" name="password" placeholder="Password" required>
+          </div>
+          <button type="submit" class="btn-submit">Login</button>
+      </form>
+  </div>
+</div>
+
+<!-- Signup Modal -->
+<div class="modal-overlay" id="signupModal">
+  <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h3>Create Account</h3>
+      <form id="signupForm" action="signup.php" method="POST">
+          <div class="form__group">
+              <input type="text" name="name" placeholder="Full Name" required>
+          </div>
+          <div class="form__group">
+              <input type="email" name="email" placeholder="Email" required>
+          </div>
+          <div class="form__group">
+              <input type="password" name="password" placeholder="Password" required>
+          </div>
+          <div class="form__group">
+              <input type="tel" name="phone" placeholder="Phone Number">
+          </div>
+          <button type="submit" class="btn-submit">Sign Up</button>
+      </form>
+  </div>
+</div>
+        <div class="menu-toggle">
+            <i class="ri-menu-line"></i>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="header__image__container">
+      <div class="slider">
+          <div class="slide active" style="background-image: url('assets/Background/beach.jpg')"></div>
+          <div class="slide" style="background-image: url('assets/Background/hotel2.jpg')"></div>
+          <div class="slide" style="background-image: url('assets/Background/hotel\ 3.jpg')"></div>
+          <div class="slide" style="background-image: url('assets/Background/hotel\ 1.jpg')"></div>
+          <div class="slide" style="background-image: url('assets/Background/hotel4.jpg')"></div>
+          <div class="slide" style="background-image: url('assets/Background/kandy.jpg')"></div>
+          <div class="slide" style="background-image: url('assets/Background/festival.jpg')"></div>
+          <div class="slide" style="background-image: url('assets/Background/kandy.jpg')"></div>
+          <div class="slide" style="background-image: url('assets/Background/yala-national-park.jpg')"></div>
+          <div class="slide" style="background-image: url('assets/Background/wildlife.jpg')"></div>
+          <div class="slide" style="background-image: url('assets/Background/jaffna.jpg')"></div>
+          <div class="slide" style="background-image: url('assets/Background/birds.jpg')"></div>
+          <div class="slide" style="background-image: url('assets/Background/kandy-lake.jpg')"></div>
+          <div class="slide" style="background-image: url('assets/Background/sri-lankan-beach.jpg')"></div>
+          <div class="slide" style="background-image: url('assets/Background/train.jpg')"></div>
+          <div class="slide" style="background-image: url('assets/Background/railway-bridge.jpg')"></div>
+      </div>
+      <!-- Rest of your header content -->
+  </div>
+
+    <header class="section__container header__container">
+        <div class="header__image__container">
+            <div class="header__content">
+                <h1>Discover Paradise in Sri Lanka</h1>
+                <p>Book luxury hotels, beach resorts, and cultural stays at the best prices.</p>
+                <div class="header__cta">
+                    <a href="#hotels" class="btn-primary">Explore Hotels</a>
+                    
+                </div>
+            </div>
+
+            <div class="booking__container">
+                <form>
+                    <div class="form__group">
+                        <div class="input__group">
+                            <i class="ri-map-pin-line"></i>
+                            <select>
+                                <option value="">Location</option>
+                                <option value="colombo">Colombo</option>
+                                <option value="galle">Galle</option>
+                                <option value="kandy">Kandy</option>
+                                <option value="sigiriya">Sigiriya</option>
+                                <option value="bentota">Bentota</option>
+                                <option value="nuwara-eliya">Nuwara Eliya</option>
+                                <option value="ella">Ella</option>
+                                <option value="anuradhapura">Anuradhapura</option>
+                                <option value="trincomalee">Trincomalee</option>
+                                <option value="mirissa">Mirissa</option>
+                                <option value="yala">Yala</option>
+                                <option value="polonnaruwa">Polonnaruwa</option>
+                                <option value="sinharaja">Sinharaja Rainforest</option>
+                                <option value="haputale">Haputale</option>
+                                <option value="dambulla">Dambulla</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form__group">
+                        <div class="input__group">
+                            <i class="ri-calendar-line"></i>
+                            <input type="date" id="checkin" />
+                        </div>
+                    </div>
+                    <div class="form__group">
+                        <div class="input__group">
+                            <i class="ri-calendar-line"></i>
+                            <input type="date" id="checkout" />
+                        </div>
+                    </div>
+                    <div class="form__group">
+                        <div class="input__group">
+                            <i class="ri-user-line"></i>
+                            <select>
+                                <option value="1">1 Guest</option>
+                                <option value="2">2 Guests</option>
+                                <option value="3">3 Guests</option>
+                                <option value="4">4 Guests</option>
+                                <option value="5+">5+ Guests</option>
+                            </select>
+                        </div>
+                      </div>
+                </form>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section class="section__container features__container">
+        <div class="features__grid">
+            <div class="feature__card">
+                <i class="fas fa-hand-holding-usd"></i>
+                <h4>Best Price Guarantee</h4>
+                <p>We guarantee the best prices for your stay. Found a better deal? We'll match it!</p>
+            </div>
+            <div class="feature__card">
+                <i class="fas fa-headset"></i>
+                <h4>24/7 Customer Support</h4>
+                <p>Our local experts are available round the clock to assist you in Sinhala, Tamil or English.</p>
+            </div>
+            <div class="feature__card">
+                <i class="fas fa-map-marked-alt"></i>
+                <h4>Local Expertise</h4>
+                <p>Get personalized recommendations from our Sri Lanka travel specialists.</p>
+            </div>
+            <div class="feature__card">
+                <i class="fas fa-shield-alt"></i>
+                <h4>Safe & Secure</h4>
+                <p>Your transactions are 100% secure with our encrypted payment system.</p>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- Popular Hotels Section -->
+    <section class="section__container popular__container" id="hotels">
+        <div class="section__header">
+            <h2>Popular Hotels in Sri Lanka</h2>
+            <p>Discover our curated selection of luxury accommodations</p>
+            <div class="filter__options">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="luxury">Luxury</button>
+                <button class="filter-btn" data-filter="semi-luxury">Semi-Luxury</button>
+                <button class="filter-btn" data-filter="jungle">Jungle</button>
+                <button class="filter-btn" data-filter="heritage">Heritage</button>
+                <button class="filter-btn" data-filter="romantic">Romantic</button>
+            </div>
+        </div>
+        <div class="popular__grid">
+            <div class="popular__card" data-category="luxury">
+                <div class="card__badge">BEST SELLER</div>
+                <img src="assets/hotels/cinnomangrand.jpg"  alt="Cinnamon Grand Colombo">
+                <div class="popular__content">
+                    <div class="popular__card__header">
+                        <h4>Cinnamon Grand Colombo</h4>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>4.5 (1,242 reviews)</span>
+                        </div>
+                    </div>
+                    <p><i class="ri-map-pin-line"></i> Colombo, Sri Lanka</p>
+                    <div class="price__container">
+                        <div class="price">
+                            <span class="original-price">$220</span>
+                            <span class="discounted-price">$189/night</span>
+                        </div>
+                        <a href="https://www.cinnamonhotels.com/cinnamon-grand-colombo?utm_source=google&utm_medium=organic&utm_campaign=gbp" target="_blank">
+                          <button class="btn-book">Book Now</button>
+                      </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="popular__card" data-category="luxury">
+              <div class="card__badge">LUXURY</div>
+              <img src="assets/hotels/itc.jpg" alt="ITC Rathnadipa">
+              <div class="popular__content">
+                  <div class="popular__card__header">
+                      <h4>ITC Rathnadipa</h4>
+                      <div class="rating">
+                          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                          <span>4.5 (1593 reviews)</span>
+                      </div>
+                  </div>
+                  <p><i class="ri-map-pin-line"></i> Colombo, Sri Lanka</p>
+                  <div class="price__container">
+                      <div class="price">
+                          <span class="original-price">$220</span>
+                          <span class="discounted-price">$170/night</span>
+                      </div>
+                      <a href="https://www.marriott.com/en-us/hotels/cmblc-itc-ratnadipa-a-luxury-collection-hotel-colombo/overview/?scid=f2ae0541-1279-4f24-b197-a979c79310b0" target="_blank">
+                        <button class="btn-book">Book Now</button>
+                    </a>
+                  
+                  </div>
+              </div>
+            </div>
+
+            <div class="popular__card" data-category="luxury">
+              <div class="card__badge">LUXURY</div>
+              <img src="assets/hotels/cinnomanlife.jpg" alt="Cinnamon Life">
+              <div class="popular__content">
+                  <div class="popular__card__header">
+                      <h4>Cinnamon Life</h4>
+                      <div class="rating">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <span>4.5 (1534 reviews)</span>
+                      </div>
+                  </div>
+                  <p><i class="ri-map-pin-line"></i> Colombo, Sri Lanka</p>
+                  <div class="price__container">
+                      <div class="price">
+                          <span class="original-price">$350</span>
+                          <span class="discounted-price">$320/night</span>
+                      </div>
+                      <a href="https://reservations.cinnamonhotels.com/?_ga=2.222245713.89505733.1745157507-1520153969.1744384480&_gl=1*1g3d2lf*_gcl_au*MjAwOTQ4Nzk3OS4xNzQ0Mzg0NDc5*_ga*MTUyMDE1Mzk2OS4xNzQ0Mzg0NDgw*_ga_SQP5B6X1B2*MTc0NTE1NzUwNy4zLjEuMTc0NTE1NzczOS43LjAuMA..&adult=1&arrive=2025-04-20&chain=31106&child=0&currency=USD&depart=2025-04-21&level=chain&locale=en-US&rooms=1" target="_blank">
+                        <button class="btn-book">Book Now</button>
+                    </a>
+                  </div>
+              </div>
+          </div>
+            <div class="popular__card" data-category="luxury">
+                <div class="card__badge">LUXURY</div>
+                <img src="assets/hotels/anantara.jpg" alt="Anantara Peace Haven Tangalle">
+                <div class="popular__content">
+                    <div class="popular__card__header">
+                        <h4>Anantara Peace Haven</h4>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>5.0 (893 reviews)</span>
+                        </div>
+                    </div>
+                    <p><i class="ri-map-pin-line"></i> Tangalle, Sri Lanka</p>
+                    <div class="price__container">
+                        <div class="price">
+                            <span class="original-price">$350</span>
+                            <span class="discounted-price">$299/night</span>
+                        </div>
+                        <a href="https://www.anantara.com/en/kalutara?utm_source=GoogleMyBusiness&utm_medium=GMB&utm_term=Kalutara&utm_content=Home&utm_campaign=Google_GMB" target="_blank">
+                          <button class="btn-book">Book Now</button>
+                      </a>
+                    </div>
+                </div>
+            </div>
+            <div class="popular__card" data-category="heritage">
+              <div class="card__badge">Heritage</div>
+                <img src="assets/hotels/queens.jpg" alt="queens">
+                <div class="popular__content">
+                    <div class="popular__card__header">
+                        <h4>Queens Hotel</h4>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>4.0 (3200 reviews)</span>
+                        </div>
+                    </div>
+                    <p><i class="ri-map-pin-line"></i> Kandy, Sri Lanka</p>
+                    <div class="price__container">
+                        <div class="price">
+                            <span class="original-price">$120</span>
+                            <span class="discounted-price">$99/night</span>
+                        </div>
+                        <a href="https://queenshotel.lk/" target="_blank">
+                          <button class="btn-book">Book Now</button>
+                      </a>
+                    </div>
+                </div>
+            </div>
+            <div class="popular__card" data-category="jungle">
+                <div class="card__badge">ECO-FRIENDLY</div>
+                <img src="assets/hotels/wildc.jpg" alt="Wild Coast Tented Lodge">
+                <div class="popular__content">
+                    <div class="popular__card__header">
+                        <h4>Wild Coast Tented Lodge</h4>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>4.7 (632 reviews)</span>
+                        </div>
+                    </div>
+                    <p><i class="ri-map-pin-line"></i> Yala, Sri Lanka</p>
+                    <div class="price__container">
+                        <div class="price">
+                            <span class="original-price">$280</span>
+                            <span class="discounted-price">$250/night</span>
+                        </div>
+                        <a href="https://www.resplendentceylon.com/resort/wild-coast-tented-lodge/?utm_source=google-my-business&utm_medium=organic&utm_campaign=Wild_Coast_Tented_Lodge_Google_My_Business" target="_blank">
+                          <button class="btn-book">Book Now</button>
+                      </a>
+                    </div>
+                </div>
+            </div>
+            <div class="popular__card" data-category="luxury">
+              <div class="card__badge">LUXURY</div>
+                <img src="assets/hotels/gallefort.jpg" alt="Galle Fort Hotel">
+                <div class="popular__content">
+                    <div class="popular__card__header">
+                        <h4>Galle Fort Hotel</h4>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>4.5 (1,087 reviews)</span>
+                        </div>
+                    </div>
+                    <p><i class="ri-map-pin-line"></i> Galle, Sri Lanka</p>
+                    <div class="price__container">
+                        <div class="price">
+                            <span class="original-price">$240</span>
+                            <span class="discounted-price">$210/night</span>
+                        </div>
+                        <a href="https://galleforthotel.com/" target="_blank">
+                          <button class="btn-book">Book Now</button>
+                      </a>
+                    </div>
+                </div>
+            </div>
+           
+
+            <div class="popular__card" data-category="jungle">
+                <img src="assets/hotels/acres.jpg" alt="98 Acres Resort & Spa">
+                <div class="card__badge">JUNGLE</div>
+                <div class="popular__content">
+                    <div class="popular__card__header">
+                        <h4>98 Acres Resort & Spa</h4>
+                        <div class="rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                            <span>4.8 (712 reviews)</span>
+                        </div>
+                    </div>
+                    <p><i class="ri-map-pin-line"></i> Ella, Sri Lanka</p>
+                    <div class="price__container">
+                        <div class="price">
+                            <span class="original-price">$260</span>
+                            <span class="discounted-price">$220/night</span>
+                        </div>
+                        <a href="https://www.resort98acres.com/" target="_blank">
+                          <button class="btn-book">Book Now</button>
+                      </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="popular__card" data-category="semi-luxury">
+              <div class="card__badge">SEMI LUXURY</div>
+                <img src="assets/hotels/mandara.jpg" alt="Mandara Resort Mirissa">
+                <div class="popular__content">
+                    <div class="popular__card__header">
+                        <h4>Mandara Resort</h4>
+                        <div class="rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <span>4.3 (530 reviews)</span>
+                        </div>
+                    </div>
+                    <p><i class="ri-map-pin-line"></i> Mirissa, Sri Lanka</p>
+                    <div class="price__container">
+                        <div class="price">
+                            <span class="original-price">$180</span>
+                            <span class="discounted-price">$149/night</span>
+                        </div>
+                        <a href="https://www.mandarahotels.com/mandararesortmirissa/" target="_blank">
+                          <button class="btn-book">Book Now</button>
+                      </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="popular__card" data-category="semi-luxury">
+              <div class="card__badge">SEMI LUXURY</div>
+                <img src="assets/hotels/hikka.jpg" alt="Hikka Tranz by Cinnamon">
+                <div class="popular__content">
+                    <div class="popular__card__header">
+                        <h4>Hikka Tranz by Cinnamon</h4>
+                        <div class="rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                            <span>4.2 (893 reviews)</span>
+                        </div>
+                    </div>
+                    <p><i class="ri-map-pin-line"></i> Hikkaduwa, Sri Lanka</p>
+                    <div class="price__container">
+                        <div class="price">
+                            <span class="original-price">$200</span>
+                            <span class="discounted-price">$170/night</span>
+                        </div>
+                        <a href="https://www.cinnamonhotels.com/hikka-tranz-by-cinnamon?utm_source=google&utm_medium=organic&utm_campaign=gbp" target="_blank">
+                          <button class="btn-book">Book Now</button>
+                      </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="popular__card" data-category="heritage">
+               <div class="card__badge">Heritage</div>
+                <img src="assets/hotels/hideway.jpg" alt="Arugambay Hideaway Resort">
+                <div class="popular__content">
+                    <div class="popular__card__header">
+                        <h4>Arugambay Hideaway Resort</h4>
+                        <div class="rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <span>4.6 (489 reviews)</span>
+                        </div>
+                    </div>
+                    <p><i class="ri-map-pin-line"></i> Arugam Bay, Sri Lanka</p>
+                    <div class="price__container">
+                        <div class="price">
+                            <span class="original-price">$160</span>
+                            <span class="discounted-price">$135/night</span>
+                        </div>
+                        <a href="https://www.hideawayarugambay.com/" target="_blank">
+                          <button class="btn-book">Book Now</button>
+                      </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="popular__card" data-category="heritage">
+                <div class="card__badge">Heritage</div>
+                <img src="assets/hotels/jetwing.jpg" alt="Jetwing Jaffna">
+                <div class="popular__content">
+                    <div class="popular__card__header">
+                        <h4>Jetwing Jaffna</h4>
+                        <div class="rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <span>4.4 (345 reviews)</span>
+                        </div>
+                    </div>
+                    <p><i class="ri-map-pin-line"></i> Jaffna, Sri Lanka</p>
+                    <div class="price__container">
+                        <div class="price">
+                            <span class="original-price">$150</span>
+                            <span class="discounted-price">$130/night</span>
+                        </div>
+                        <a href="https://www.jetwinghotels.com/jetwingjaffna/" target="_blank">
+                          <button class="btn-book">Book Now</button>
+                      </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="popular__card" data-category="semi-luxury">
+                <div class="card__badge">SEMI LUXURY</div>
+                <img src="assets/hotels/trincoblu.jpg" alt="Trinco Blu by Cinnamon">
+                <div class="popular__content">
+                    <div class="popular__card__header">
+                        <h4>Trinco Blu by Cinnamon</h4>
+                        <div class="rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <span>4.5 (789 reviews)</span>
+                        </div>
+                    </div>
+                    <p><i class="ri-map-pin-line"></i> Trincomalee, Sri Lanka</p>
+                    <div class="price__container">
+                        <div class="price">
+                            <span class="original-price">$220</span>
+                            <span class="discounted-price">$190/night</span>
+                        </div>
+                        <a href="https://www.cinnamonhotels.com/trinco-blu-by-cinnamon?utm_source=google&utm_medium=organic&utm_campaign=gbp" target="_blank">
+                          <button class="btn-book">Book Now</button>
+                      </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="popular__card" data-category="luxury">
+                <div class="card__badge"> LUXURY</div>
+                <img src="assets/hotels/heritance.jpg" alt="Heritance Negombo">
+                <div class="popular__content">
+                    <div class="popular__card__header">
+                        <h4>Heritance Negombo</h4>
+                        <div class="rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                            <span>4.3 (654 reviews)</span>
+                        </div>
+                    </div>
+                    <p><i class="ri-map-pin-line"></i> Negombo, Sri Lanka</p>
+                    <div class="price__container">
+                        <div class="price">
+                            <span class="original-price">$210</span>
+                            <span class="discounted-price">$179/night</span>
+                        </div>
+                        <a href="https://www.heritancehotels.com/sentido-heritance/?utm_source=google&utm_medium=organic&utm_campaign=negombo&utm_term=gbp" target="_blank">
+                          <button class="btn-book">Book Now</button>
+                      </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="popular__card" data-category="luxury">
+              <div class="card__badge"> LUXURY</div>
+                <img src="assets/hotels/ananantara-kalutara.jpg" alt="Anantara Kalutara Resort">
+                <div class="popular__content">
+                    <div class="popular__card__header">
+                        <h4>Anantara Kalutara Resort</h4>
+                        <div class="rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <span>4.8 (3289 reviews)</span>
+                        </div>
+                    </div>
+                    <p><i class="ri-map-pin-line"></i> Kalutara, Sri Lanka</p>
+                    <div class="price__container">
+                        <div class="price">
+                            <span class="original-price">$270</span>
+                            <span class="discounted-price">$230/night</span>
+                        </div>
+                        <a href="https://www.anantara.com/en/kalutara?utm_source=GoogleMyBusiness&utm_medium=GMB&utm_term=Kalutara&utm_content=Home&utm_campaign=Google_GMB" target="_blank">
+                          <button class="btn-book">Book Now</button>
+                      </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="popular__card" data-category="romantic">
+                <div class="card__badge">ROMANTIC</div>
+                <img src="assets/hotels/cape.jpg" alt="Cape Weligama">
+                <div class="popular__content">
+                    <div class="popular__card__header">
+                        <h4>Cape Weligama</h4>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>5.0 (942 reviews)</span>
+                        </div>
+                    </div>
+                    <p><i class="ri-map-pin-line"></i> Weligama, Sri Lanka</p>
+                    <div class="price__container">
+                        <div class="price">
+                            <span class="original-price">$320</span>
+                            <span class="discounted-price">$290/night</span>
+                        </div>
+                        <a href="https://www.resplendentceylon.com/resort/cape-weligama/?utm_source=google-my-business&utm_medium=organic&utm_campaign=Cape_Weligama_Google_My_Business" target="_blank">
+                          <button class="btn-book">Book Now</button>
+                      </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="view-all">
+            <a href="#" class="btn-view-all">View All Hotels <i class="ri-arrow-right-line"></i></a>
+        </div>
+    </section>
+
+    <!-- Destinations Section -->
+    <section class="section__container destinations__container" id="destinations">
+        <div class="section__header">
+            <h2>Explore Sri Lanka</h2>
+            <p>Discover the diverse landscapes and rich culture of our island paradise</p>
+        </div>
+        <section class="video__section">
+          <div class="video__container">
+            <div class="video__left">
+              <div class="video__player">
+                <video controls poster="assets/Video/thumbnail.jpg">
+                  <source src="assets/Video/Video.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
+            <div class="video__right">
+              <p>
+                Sri Lanka, the “Pearl of the Indian Ocean,” is an island of timeless beauty and diverse experiences. From ancient cities and sacred temples to lush tea plantations and golden beaches, Sri Lanka offers a perfect blend of culture, nature, and adventure. Whether you're exploring Sigiriya's rock fortress, enjoying the scenic train to Ella, or relaxing in Mirissa's tropical coastlines — every corner of Sri Lanka is filled with charm and wonder.
+              </p>
+              
+              <div class="about__actions">
+                <a href="#" class="btn-readmore">Read More</a>
+            </div>
+            
+            <!-- History Popup -->
+            <div class="history-popup" id="historyPopup">
+                <div class="history-popup-content">
+                    <span class="close-history">&times;</span>
+                    <h3>The Rich History of Sri Lanka</h3>
+                    <div class="history-content">
+                        <p>Sri Lanka's history spans over 3,000 years, with evidence of prehistoric human settlements dating back at least 125,000 years. The island's strategic location made it an important stop on ancient maritime trade routes.</p>
+                        
+                        <h4>Ancient Kingdoms (543 BC - 1815 AD)</h4>
+                        <p>The Sinhalese kingdoms developed advanced hydraulic systems and built magnificent structures like Sigiriya and the ancient cities of Anuradhapura and Polonnaruwa. Buddhism was introduced in the 3rd century BC and became integral to Sri Lankan culture.</p>
+                        
+                        <h4>Colonial Era (1505-1948)</h4>
+                        <p>Portuguese (1505), Dutch (1658), and British (1796) colonizers arrived seeking spices and strategic advantages. The British unified the island in 1815 and introduced coffee, then tea plantations that still shape the economy today.</p>
+                        
+                        <h4>Modern Sri Lanka (1948-Present)</h4>
+                        <p>Gained independence in 1948 as Ceylon, became a republic in 1972 as Sri Lanka. Despite a 26-year civil war ending in 2009, the country has preserved its cultural heritage while developing as a popular tourist destination known for its beaches, wildlife, and ancient sites.</p>
+                        
+                        <div class="historical-images">
+                            <img src="assets/history/sigiriya.jpg" alt="Sigiriya Rock Fortress">
+                            <img src="assets/history/temple.jpg" alt="Ancient Temple">
+                        </div>
+                    </div>
+                </div>
+            </div>
+              </div>
+</div>
+            </div>
+          </div>
+        </section>
+        
+        <div class="destinations__grid">
+            <div class="destination__card">
+                <img src="assets/Destinations/colombo.jpg" alt="Colombo">
+                <div class="destination__content">
+                    <h4>Colombo</h4>
+                    <p>Sri Lanka's vibrant capital with colonial architecture, shopping, and nightlife.</p>
+                    <a href="#" class="btn-explore">Explore <i class="ri-arrow-right-line"></i></a>
+                </div>
+            </div>
+            <div class="destination__card">
+                <img src="assets/Destinations/galle.jpg" alt="Galle">
+                <div class="destination__content">
+                    <h4>Galle</h4>
+                    <p>Historic fort city with Dutch colonial buildings and beautiful beaches.</p>
+                    <a href="#" class="btn-explore">Explore <i class="ri-arrow-right-line"></i></a>
+                </div>
+            </div>
+            <div class="destination__card">
+                <img src="assets/Destinations/sigiriya.jpg" alt="Sigiriya">
+                <div class="destination__content">
+                    <h4>Sigiriya</h4>
+                    <p>Ancient rock fortress and UNESCO World Heritage Site.</p>
+                    <a href="#" class="btn-explore">Explore <i class="ri-arrow-right-line"></i></a>
+                </div>
+            </div>
+            <div class="destination__card">
+                <img src="assets/Destinations/nuwaraeliya.jpg" alt="Nuwara Eliya">
+                <div class="destination__content">
+                    <h4>Nuwara Eliya</h4>
+                    <p>Cool climate hill country with tea plantations and colonial charm.</p>
+                    <a href="#" class="btn-explore">Explore <i class="ri-arrow-right-line"></i></a>
+                </div>
+            </div>
+        </div>
+
+      
+      <!-- second row destination -->
+      <div class="destinations__grid">
+          <div class="destination__card">
+              <img src="assets/Destinations/kandy.jpg" alt="Kandy">
+              <div class="destination__content">
+                  <h4>Kandy</h4>
+                  <p>Home to the sacred Temple of the Tooth, Kandy is a cultural capital surrounded by lush hills and history.</p>
+                  <a href="#" class="btn-explore">Explore <i class="ri-arrow-right-line"></i></a>
+              </div>
+          </div>
+          <div class="destination__card">
+              <img src="assets/Destinations/ella.jpg" alt="Ella">
+              <div class="destination__content">
+                  <h4>Ella</h4>
+                  <p>Hill country paradise known for the Nine Arches Bridge and breathtaking views.</p>
+                  <a href="#" class="btn-explore">Explore <i class="ri-arrow-right-line"></i></a>
+              </div>
+          </div>
+
+          <div class="destination__card">
+              <img src="assets/Destinations/anurapura.jpg" alt="Anuradhapura">
+              <div class="destination__content">
+                  <h4>Anuradhapura</h4>
+                  <p>Ancient city filled with Buddhist temples, stupas, and ruins.</p>
+                  <a href="#" class="btn-explore">Explore <i class="ri-arrow-right-line"></i></a>
+              </div>
+          </div>
+          <div class="destination__card">
+              <img src="assets/Destinations/trinco.jpg" alt="Trincomalee">
+              <div class="destination__content">
+                  <h4>Trincomalee</h4>
+                  <p>Coastal town with pristine beaches, diving spots, and historic temples.</p>
+                  <a href="#" class="btn-explore">Explore <i class="ri-arrow-right-line"></i></a>
+              </div>
+          </div>
+      </div>
+
+       <!-- Third row destination -->
+      <div class="destinations__grid">
+        <div class="destination__card">
+            <img src="assets/Destinations/mirissa.jpg" alt="Mirissa">
+            <div class="destination__content">
+                <h4>Mirissa</h4>
+                <p>Relaxed beach town ideal for surfing, whale watching, and sunsets.</p>
+                <a href="#" class="btn-explore">Explore <i class="ri-arrow-right-line"></i></a>
+            </div>
+        </div>
+        <div class="destination__card">
+            <img src="assets/Destinations/Yala-National.jpg" alt="Yala">
+            <div class="destination__content">
+                <h4>Yala-National</h4>
+                <p>Famous national park for wildlife safaris, especially leopards and elephants.</p>
+                <a href="#" class="btn-explore">Explore <i class="ri-arrow-right-line"></i></a>
+            </div>
+        </div>
+        <div class="destination__card">
+            <img src="assets/Destinations/polonnaruwa.jpg" alt="Polonnaruwa">
+            <div class="destination__content">
+                <h4>Polonnaruwa</h4>
+                <p>Medieval capital with well-preserved ruins and stone carvings.</p>
+                <a href="#" class="btn-explore">Explore <i class="ri-arrow-right-line"></i></a>
+            </div>
+        </div>
+        <div class="destination__card">
+            <img src="assets/Destinations/sinharaja.jpg" alt="Sinharaja">
+            <div class="destination__content">
+                <h4>Sinharaja Rainforest</h4>
+                <p>UNESCO-listed rainforest with rare flora and fauna for eco adventures.</p>
+                <a href="#" class="btn-explore">Explore <i class="ri-arrow-right-line"></i></a>
+            </div>
+        </div>
+    </div>
+
+
+
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section__container testimonials__container" id="testimonials">
+        <div class="section__header">
+            <h2>What Our Guests Say</h2>
+            <p>Hear from travelers who've experienced Sri Lanka with us</p>
+        </div>
+        <div class="testimonials__grid">
+            <div class="testimonial__card">
+                <div class="testimonial__header">
+                    <img src="assets/sarah.jpg" alt="Client">
+                    <div class="client__info">
+                        <h5>Sarah Johnson</h5>
+                        <span>From UK</span>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <p>"Booking through Serendib Stays was seamless. The hotel in Galle exceeded our expectations with its colonial charm and excellent service. The local tips from the team were invaluable!"</p>
+            </div>
+            <div class="testimonial__card">
+                <div class="testimonial__header">
+                    <img src="assets/raj.jpg" alt="Client">
+                    <div class="client__info">
+                        <h5>Raj Patel</h5>
+                        <span>From India</span>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                </div>
+                <p>"As a frequent traveler to Sri Lanka, I can say Serendib Stays offers the best local rates. Their 24/7 support in multiple languages is a game-changer for foreign visitors."</p>
+            </div>
+            <div class="testimonial__card">
+                <div class="testimonial__header">
+                    <img src="assets/napi.jpg" alt="Client">
+                    <div class="client__info">
+                        <h5>Pabasara Thennakoon</h5>
+                        <span>From Colombo</span>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <p>"Even as a local, I discovered amazing hotels through this platform. The weekend getaway deals are perfect for Sri Lankan families looking for quality time together."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="section__container newsletter__container">
+        <div class="newsletter__content">
+            <h3>Subscribe to Our Newsletter</h3>
+            <p>Get exclusive deals, travel tips, and updates on Sri Lankan hotels directly to your inbox.</p>
+            <form class="newsletter__form">
+                <input type="email" placeholder="Enter your email address">
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+<section class="section__container about__container" id="about">
+  <div class="section__header">
+      <h2>Our Story</h2>
+      <p>Discover the passion behind Serendib Stays</p>
+  </div>
+  <div class="about__content">
+      <div class="about__text">
+          <h3>Welcome to Serendib Stays</h3>
+          <p>Born from a deep love for Sri Lanka's breathtaking landscapes and rich cultural heritage, Serendib Stays was founded in 2025 with a simple mission: to connect travelers with the most authentic and luxurious accommodations across our island paradise.</p>
+          
+          <p>Our name "Serendib" comes from the ancient Arabic name for Sri Lanka, meaning "island of jewels" - a fitting tribute to the gem-like beauty of our destinations. We carefully curate each property in our collection, ensuring they meet our high standards for comfort, service, and sustainability.</p>
+          
+          <p>What sets us apart is our local expertise. Our team consists of passionate Sri Lankans who know every hidden beach, misty mountain, and ancient city personally. We don't just book your stay - we craft experiences that will become lifelong memories.</p>
+          
+          <div class="mission">
+              <h4>Our Mission</h4>
+              <p>To showcase Sri Lanka's hospitality through exceptional stays while supporting local communities and preserving our natural wonders for future generations.</p>
+          </div>
+      </div>
+      <div class="about__team">
+          <div class="team-member">
+              <img src="assets/about us/nayana.jpg" alt="Nayana Pabasara">
+              <h4>Nayana Pabasara</h4>
+              <p>Lead Developer</p>
+              <div class="social-links">
+                  <a href="#"><i class="ri-facebook-fill"></i></a>
+                  <a href="#"><i class="ri-linkedin-fill"></i></a>
+                  <a href="#"><i class="ri-github-fill"></i></a>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+
+    <!-- Contact Section -->
+    <section class="section__container contact__container" id="contact">
+        <div class="contact__grid">
+            <div class="contact__info">
+                <h3>Contact Us</h3>
+                <p><i class="ri-map-pin-line"></i> Mahenwatta, Pitipana - Thalagala Rd, Homagama, Sri Lanka</p>
+                <p><i class="ri-phone-line"></i> +94 11 234 5678</p>
+                <p><i class="ri-mail-line"></i> serendibstays@gmail.com</p>
+                <div class="social__icons">
+                    <a href="#"><i class="ri-facebook-fill"></i></a>
+                    <a href="#"><i class="ri-instagram-line"></i></a>
+                    <a href="#"><i class="ri-twitter-fill"></i></a>
+                    <a href="#"><i class="ri-youtube-fill"></i></a>
+                </div>
+            </div>
+            <div class="contact__form">
+                <h3>Send us a message</h3>
+                <form>
+                    <div class="form__group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form__group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form__group">
+                        <textarea placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="section__container footer__container">
+            <div class="footer__col">
+                <h3>Serendib Stays</h3>
+                <p>Your trusted partner for discovering and booking the finest accommodations across Sri Lanka. We connect travelers with authentic Sri Lankan hospitality experiences.</p>
+                <div class="footer__logo">
+                    <i class="fas fa-umbrella-beach"></i>
+                    <span>Serendib Stays</span>
+                </div>
+            </div>
+            <div class="footer__col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#hotels">Hotels</a></li>
+                    <li><a href="#destinations">Destinations</a></li>
+                    <li><a href="#deals">Deals</a></li>
+                    <li><a href="#testimonials">Reviews</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Cancellation Policy</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h4>Payment Methods</h4>
+                <div class="payment__methods">
+                    <img src="assets/visa.png" alt="Visa">
+                    <img src="assets/mastercard.png" alt="Mastercard">
+                    <img src="assets/americanexpress.png" alt="American Express">
+                    <img src="assets/paypal.png" alt="PayPal">
+                    <img src="assets/Payoneer.png" alt="Payoneer">
+                </div>
+                <h4>Download Our App</h4>
+                <div class="app__download">
+                    <a href="#"><img src="assets/playstore.png" alt="Google Play"></a>
+                    <a href="#"><img src="assets/appstore.png" alt="App Store"></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer__bar">
+            <div class="footer__bar__content">
+                <div class="copyright">
+                    Copyright © 2025 Serendib Stays. All rights reserved.
+                </div>
+                <div class="footer__links">
+                    <a href="#">Sitemap</a>
+                    <a href="#">Accessibility</a>
+                    <a href="#">Careers</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
