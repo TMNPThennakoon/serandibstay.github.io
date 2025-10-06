@@ -387,11 +387,271 @@ body.dark-mode .divider-mini span {
   color: #b0b0b0;
 }
 
+/* Modern Transport Dropdown */
+.modern-transport-dropdown {
+  position: relative;
+}
+
+.transport-trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: all 0.3s ease;
+}
+
+.transport-arrow {
+  transition: transform 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.modern-transport-dropdown:hover .transport-arrow {
+  transform: rotate(180deg);
+}
+
+.modern-transport-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+  min-width: 400px;
+  max-width: 500px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15), 0 8px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1000;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+}
+
+.modern-transport-dropdown:hover .modern-transport-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.transport-header {
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.transport-icon {
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.transport-info h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem 0;
+}
+
+.transport-info p {
+  font-size: 0.85rem;
+  opacity: 0.9;
+  margin: 0;
+}
+
+.transport-content {
+  padding: 1.5rem;
+}
+
+.transport-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.transport-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: white;
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  overflow: hidden;
+}
+
+.transport-card:hover {
+  border-color: var(--primary-color);
+  box-shadow: 0 8px 25px rgba(10, 74, 122, 0.15);
+  transform: translateY(-2px);
+}
+
+.transport-card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.train-card .transport-card-icon {
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+  color: white;
+}
+
+.bus-card .transport-card-icon {
+  background: linear-gradient(135deg, #28a745 0%, #1e7e34 100%);
+  color: white;
+}
+
+.tuk-tuk-card .transport-card-icon {
+  background: linear-gradient(135deg, #ffc107 0%, #e0a800 100%);
+  color: #212529;
+}
+
+.car-card .transport-card-icon {
+  background: linear-gradient(135deg, #6f42c1 0%, #5a2d91 100%);
+  color: white;
+}
+
+.motorcycle-card .transport-card-icon {
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+  color: white;
+}
+
+.transport-card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.transport-card-content h5 {
+  font-weight: 600;
+  font-size: 1rem;
+  margin: 0;
+  color: #333;
+}
+
+.transport-card-content p {
+  font-size: 0.8rem;
+  color: #666;
+  margin: 0;
+}
+
+.transport-badge {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: var(--primary-color);
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 8px;
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+.transport-card-arrow {
+  color: #999;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.transport-card:hover .transport-card-arrow {
+  color: var(--primary-color);
+  transform: translateX(3px);
+}
+
+.transport-footer {
+  border-top: 1px solid #e9ecef;
+  padding-top: 1rem;
+}
+
+.transport-tip {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+  border-radius: 10px;
+  border-left: 4px solid #ffc107;
+}
+
+.transport-tip i {
+  color: #856404;
+  font-size: 1.2rem;
+}
+
+.transport-tip span {
+  color: #856404;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* Dark Mode for Transport Dropdown */
+body.dark-mode .modern-transport-menu {
+  background: linear-gradient(145deg, #1e1e1e 0%, #2a2a2a 100%);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .transport-card {
+  background: #2a2a2a;
+  border-color: #444;
+  color: #f5f5f5;
+}
+
+body.dark-mode .transport-card:hover {
+  border-color: var(--primary-color);
+  background: #333;
+}
+
+body.dark-mode .transport-card-content h5 {
+  color: #f5f5f5;
+}
+
+body.dark-mode .transport-card-content p {
+  color: #b0b0b0;
+}
+
+body.dark-mode .transport-footer {
+  border-color: #444;
+}
+
+body.dark-mode .transport-tip {
+  background: linear-gradient(135deg, #2d2a1a 0%, #3d3520 100%);
+  border-color: #ffc107;
+}
+
+body.dark-mode .transport-tip i,
+body.dark-mode .transport-tip span {
+  color: #ffc107;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .modern-account-menu {
     right: -50px;
     min-width: 280px;
+  }
+  
+  .modern-transport-menu {
+    left: -100px;
+    min-width: 320px;
   }
   
   .dropdown-header {
@@ -405,6 +665,19 @@ body.dark-mode .divider-mini span {
   .btn-modern-login,
   .btn-modern-signup,
   .btn-user-action {
+    padding: 0.875rem;
+  }
+  
+  .transport-content {
+    padding: 1rem;
+  }
+  
+  .transport-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  
+  .transport-card {
     padding: 0.875rem;
   }
 }
