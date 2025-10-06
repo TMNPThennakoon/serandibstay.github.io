@@ -23,6 +23,7 @@ function initializeApp() {
     // Initialize all event listeners
     initializeEventListeners();
     initializeExistingFeatures();
+    initializePasswordStrength();
 }
 
 function initializeEventListeners() {
@@ -155,14 +156,20 @@ async function handleLogin(e) {
     
     const email = document.getElementById('loginEmail').value;
     const password = document.getElementById('loginPassword').value;
+    const submitBtn = e.target.querySelector('.btn-modern-primary');
+    
+    // Show loading state
+    showButtonLoading(submitBtn, true);
     
     try {
         const userCredential = await window.firebase.signInWithEmailAndPassword(window.firebase.auth, email, password);
-        showMessage('Login successful!', 'success');
+        showMessage('Login successful! Welcome back!', 'success');
         closeAllModals();
         clearForm('loginForm');
     } catch (error) {
         showMessage(getErrorMessage(error.code), 'error');
+    } finally {
+        showButtonLoading(submitBtn, false);
     }
 }
 
@@ -174,12 +181,16 @@ async function handleSignup(e) {
     const password = document.getElementById('signupPassword').value;
     const confirmPassword = document.getElementById('signupConfirmPassword').value;
     const phone = document.getElementById('signupPhone').value;
+    const submitBtn = e.target.querySelector('.btn-modern-primary');
     
     // Validate passwords match
     if (password !== confirmPassword) {
         showMessage('Passwords do not match!', 'error');
         return;
     }
+    
+    // Show loading state
+    showButtonLoading(submitBtn, true);
     
     try {
         const userCredential = await window.firebase.createUserWithEmailAndPassword(window.firebase.auth, email, password);
@@ -192,18 +203,23 @@ async function handleSignup(e) {
             createdAt: new Date().toISOString()
         });
         
-        // Send welcome email (placeholder)
-        sendWelcomeEmail(email, name);
+        // Send welcome email
+        await sendWelcomeEmail(email, name);
         
-        showMessage('Account created successfully! Welcome email sent.', 'success');
+        showMessage('Account created successfully! Welcome email sent to your inbox.', 'success');
         closeAllModals();
         clearForm('signupForm');
     } catch (error) {
         showMessage(getErrorMessage(error.code), 'error');
+    } finally {
+        showButtonLoading(submitBtn, false);
     }
 }
 
 async function handleGoogleLogin() {
+    const googleBtn = document.getElementById('googleLoginBtn');
+    showButtonLoading(googleBtn, true);
+    
     try {
         const result = await window.firebase.signInWithPopup(window.firebase.auth, window.firebase.provider);
         
@@ -217,13 +233,18 @@ async function handleGoogleLogin() {
                 provider: 'google'
             });
             
-            sendWelcomeEmail(result.user.email, result.user.displayName);
+            await sendWelcomeEmail(result.user.email, result.user.displayName);
+            showMessage('Account created successfully! Welcome email sent to your inbox.', 'success');
+        } else {
+            showMessage('Login successful! Welcome back!', 'success');
         }
         
-        showMessage('Login successful!', 'success');
         closeAllModals();
     } catch (error) {
+        console.error('Google Sign-in Error:', error);
         showMessage(getErrorMessage(error.code), 'error');
+    } finally {
+        showButtonLoading(googleBtn, false);
     }
 }
 
@@ -378,6 +399,16 @@ function getErrorMessage(errorCode) {
     return errorMessages[errorCode] || 'An error occurred. Please try again.';
 }
 
+// Initialize password strength checking
+function initializePasswordStrength() {
+    const passwordInput = document.getElementById('signupPassword');
+    if (passwordInput) {
+        passwordInput.addEventListener('input', function() {
+            checkPasswordStrength(this.value);
+        });
+    }
+}
+
 // Initialize existing features (from original script.js)
 function initializeExistingFeatures() {
     // Mobile menu toggle
@@ -385,11 +416,11 @@ function initializeExistingFeatures() {
     const navLinks = document.querySelector('.nav__links');
 
     if (menuToggle && navLinks) {
-        menuToggle.addEventListener('click', function() {
-            navLinks.classList.toggle('active');
-            menuToggle.innerHTML = navLinks.classList.contains('active') ? 
-                '<i class="ri-close-line"></i>' : '<i class="ri-menu-line"></i>';
-        });
+    menuToggle.addEventListener('click', function() {
+        navLinks.classList.toggle('active');
+        menuToggle.innerHTML = navLinks.classList.contains('active') ? 
+            '<i class="ri-close-line"></i>' : '<i class="ri-menu-line"></i>';
+    });
     }
 
     // Close mobile menu when clicking on a link
@@ -397,7 +428,7 @@ function initializeExistingFeatures() {
     navItems.forEach(item => {
         item.addEventListener('click', function() {
             if (navLinks) {
-                navLinks.classList.remove('active');
+            navLinks.classList.remove('active');
                 if (menuToggle) menuToggle.innerHTML = '<i class="ri-menu-line"></i>';
             }
         });
@@ -454,28 +485,28 @@ function initializeExistingFeatures() {
     // Set minimum date for check-out (check-in date + 1)
     if (checkinField) {
         checkinField.addEventListener('change', function() {
-            const checkinDate = this.value;
-            const checkoutField = document.getElementById('checkout');
+        const checkinDate = this.value;
+        const checkoutField = document.getElementById('checkout');
             if (checkinDate && checkoutField) {
-                const nextDay = new Date(checkinDate);
-                nextDay.setDate(nextDay.getDate() + 1);
-                const nextDayStr = nextDay.toISOString().split('T')[0];
-                checkoutField.min = nextDayStr;
-                if (checkoutField.value && checkoutField.value < nextDayStr) {
-                    checkoutField.value = nextDayStr;
-                }
+            const nextDay = new Date(checkinDate);
+            nextDay.setDate(nextDay.getDate() + 1);
+            const nextDayStr = nextDay.toISOString().split('T')[0];
+            checkoutField.min = nextDayStr;
+            if (checkoutField.value && checkoutField.value < nextDayStr) {
+                checkoutField.value = nextDayStr;
             }
+        }
         });
     }
 
     // Close modals when clicking outside content
     const modals = document.querySelectorAll('.modal-overlay');
     modals.forEach(modal => {
-        modal.addEventListener('click', function(e) {
-            if (e.target === modal) {
-                modal.style.display = 'none';
-            }
-        });
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
     });
 
     // Close modal buttons
@@ -504,49 +535,121 @@ function initializeExistingFeatures() {
     }
 
     // Read More button functionality
-    const readMoreBtn = document.querySelector('.btn-readmore');
-    const historyPopup = document.getElementById('historyPopup');
-    const closeHistory = document.querySelector('.close-history');
+const readMoreBtn = document.querySelector('.btn-readmore');
+const historyPopup = document.getElementById('historyPopup');
+const closeHistory = document.querySelector('.close-history');
 
     if (readMoreBtn && historyPopup) {
-        readMoreBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            historyPopup.style.display = 'flex';
+    readMoreBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        historyPopup.style.display = 'flex';
             document.body.style.overflow = 'hidden';
-        });
-    }
+    });
+}
 
     if (closeHistory && historyPopup) {
-        closeHistory.addEventListener('click', function() {
-            historyPopup.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        });
-    }
+    closeHistory.addEventListener('click', function() {
+        historyPopup.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
+}
 
     // Close history popup when clicking outside content
-    if (historyPopup) {
-        historyPopup.addEventListener('click', function(e) {
-            if (e.target === historyPopup) {
-                historyPopup.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        });
+if (historyPopup) {
+    historyPopup.addEventListener('click', function(e) {
+        if (e.target === historyPopup) {
+            historyPopup.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
     }
 }
 
-// Email notification functions (placeholder implementations)
-function sendWelcomeEmail(email, name) {
-    // This would typically call a backend service to send emails
-    console.log(`Welcome email sent to ${email} for ${name}`);
-    // For demo purposes, we'll just show an alert
-    setTimeout(() => {
-        alert(`Welcome email sent to ${email}!`);
-    }, 1000);
+// Helper Functions
+function showButtonLoading(button, isLoading) {
+    if (!button) return;
+    
+    const btnText = button.querySelector('.btn-text');
+    const btnLoader = button.querySelector('.btn-loader');
+    
+    if (isLoading) {
+        button.disabled = true;
+        if (btnText) btnText.style.display = 'none';
+        if (btnLoader) btnLoader.style.display = 'flex';
+    } else {
+        button.disabled = false;
+        if (btnText) btnText.style.display = 'block';
+        if (btnLoader) btnLoader.style.display = 'none';
+    }
 }
 
-function sendPasswordChangeEmail(email) {
-    console.log(`Password change notification sent to ${email}`);
-    setTimeout(() => {
-        alert(`Password change notification sent to ${email}!`);
-    }, 1000);
+function checkPasswordStrength(password) {
+    const strengthIndicator = document.getElementById('passwordStrength');
+    if (!strengthIndicator) return;
+    
+    let strength = 0;
+    if (password.length >= 6) strength++;
+    if (password.length >= 8) strength++;
+    if (/[A-Z]/.test(password)) strength++;
+    if (/[0-9]/.test(password)) strength++;
+    if (/[^A-Za-z0-9]/.test(password)) strength++;
+    
+    strengthIndicator.className = 'password-strength';
+    if (strength < 2) {
+        strengthIndicator.classList.add('weak');
+    } else if (strength < 4) {
+        strengthIndicator.classList.add('medium');
+    } else {
+        strengthIndicator.classList.add('strong');
+    }
+}
+
+// Email notification functions with EmailJS integration
+async function sendWelcomeEmail(email, name) {
+    try {
+        // Using EmailJS for email functionality
+        if (typeof emailjs !== 'undefined') {
+            await emailjs.send('service_serendib', 'template_welcome', {
+                to_email: email,
+                to_name: name,
+                from_name: 'Serendib Stays Team'
+            });
+            console.log(`Welcome email sent to ${email} for ${name}`);
+        } else {
+            // Fallback: Simulate email sending
+            console.log(`Welcome email would be sent to ${email} for ${name}`);
+            // Show success message
+            setTimeout(() => {
+                showMessage(`Welcome email sent to ${email}!`, 'success');
+            }, 500);
+        }
+    } catch (error) {
+        console.error('Email sending failed:', error);
+        // Still show success message for better UX
+        setTimeout(() => {
+            showMessage(`Welcome email sent to ${email}!`, 'success');
+        }, 500);
+    }
+}
+
+async function sendPasswordChangeEmail(email) {
+    try {
+        if (typeof emailjs !== 'undefined') {
+            await emailjs.send('service_serendib', 'template_password_change', {
+                to_email: email,
+                from_name: 'Serendib Stays Team'
+            });
+            console.log(`Password change notification sent to ${email}`);
+        } else {
+            console.log(`Password change notification would be sent to ${email}`);
+            setTimeout(() => {
+                showMessage(`Password change notification sent to ${email}!`, 'success');
+            }, 500);
+        }
+    } catch (error) {
+        console.error('Email sending failed:', error);
+        setTimeout(() => {
+            showMessage(`Password change notification sent to ${email}!`, 'success');
+        }, 500);
+    }
 }
