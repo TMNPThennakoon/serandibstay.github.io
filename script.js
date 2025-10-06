@@ -349,6 +349,7 @@ function updateUI(user) {
     const guestMenu = document.getElementById('guestMenu');
     const userMenu = document.getElementById('userMenu');
     const accountText = document.getElementById('accountText');
+    const accountTextMobile = document.getElementById('accountTextMobile');
     const dropdownUserName = document.getElementById('dropdownUserName');
     const dropdownUserEmail = document.getElementById('dropdownUserEmail');
     
@@ -357,6 +358,7 @@ function updateUI(user) {
         if (guestMenu) guestMenu.style.display = 'none';
         if (userMenu) userMenu.style.display = 'block';
         if (accountText) accountText.textContent = user.displayName || 'Profile';
+        if (accountTextMobile) accountTextMobile.textContent = user.displayName || 'Profile';
         
         // Update dropdown header
         if (dropdownUserName) dropdownUserName.textContent = `Welcome back, ${user.displayName || 'User'}!`;
@@ -372,6 +374,7 @@ function updateUI(user) {
         if (guestMenu) guestMenu.style.display = 'block';
         if (userMenu) userMenu.style.display = 'none';
         if (accountText) accountText.textContent = 'Account';
+        if (accountTextMobile) accountTextMobile.textContent = 'Account';
         
         // Reset dropdown header
         if (dropdownUserName) dropdownUserName.textContent = 'Welcome to Serendib Stays';
@@ -465,6 +468,56 @@ function initializeExistingFeatures() {
                 if (menuToggle) menuToggle.innerHTML = '<i class="ri-menu-line"></i>';
             }
         });
+    });
+
+    // Mobile dropdown toggles
+    const mobileDropdownToggles = document.querySelectorAll('.dropdown-toggle.mobile-only');
+    mobileDropdownToggles.forEach(toggle => {
+        toggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const target = this.getAttribute('data-target');
+            const dropdown = this.nextElementSibling;
+            
+            // Close other dropdowns
+            mobileDropdownToggles.forEach(otherToggle => {
+                if (otherToggle !== this) {
+                    otherToggle.classList.remove('active');
+                    const otherDropdown = otherToggle.nextElementSibling;
+                    if (otherDropdown && otherDropdown.classList.contains('dropdown-menu')) {
+                        otherDropdown.style.display = 'none';
+                        otherDropdown.style.maxHeight = '0';
+                    }
+                }
+            });
+            
+            // Toggle current dropdown
+            this.classList.toggle('active');
+            if (dropdown && dropdown.classList.contains('dropdown-menu')) {
+                if (this.classList.contains('active')) {
+                    dropdown.style.display = 'block';
+                    dropdown.style.maxHeight = '1000px';
+                } else {
+                    dropdown.style.display = 'none';
+                    dropdown.style.maxHeight = '0';
+                }
+            }
+        });
+    });
+
+    // Close mobile dropdowns when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.dropdown')) {
+            mobileDropdownToggles.forEach(toggle => {
+                toggle.classList.remove('active');
+                const dropdown = toggle.nextElementSibling;
+                if (dropdown && dropdown.classList.contains('dropdown-menu')) {
+                    dropdown.style.display = 'none';
+                    dropdown.style.maxHeight = '0';
+                }
+            });
+        }
     });
 
     // Filter hotels by category
