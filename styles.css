@@ -57,60 +57,356 @@ body {
     margin: 0 auto;
 }
 
-/* Dropdown Menu */
-.dropdown {
+/* Modern Dropdown Menu */
+.modern-dropdown {
   position: relative;
 }
 
-.dropdown-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: var(--white);
-  min-width: 200px;
-  box-shadow: var(--box-shadow);
-  border-radius: var(--border-radius);
-  padding: 1rem 0;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-  z-index: 100;
-}
-
-.dropdown:hover .dropdown-menu {
-  opacity: 1;
-  visibility: visible;
-}
-
-.dropdown-menu li {
-  padding: 0.5rem 1.5rem;
-}
-
-.dropdown-menu li:hover {
-  background-color: var(--extra-light);
-}
-
-.dropdown-menu a {
-  display: block;
-  color: var(--text-dark);
-}
-
-.dropdown > a {
+.account-trigger {
   display: flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-body.dark-mode .dropdown-menu {
-  background-color: #1e1e1e;
+.account-trigger:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
 }
 
-body.dark-mode .dropdown-menu a {
+.account-avatar {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1rem;
+}
+
+.dropdown-arrow {
+  transition: transform 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.modern-dropdown:hover .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.modern-account-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+  min-width: 320px;
+  max-width: 400px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15), 0 8px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1000;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+}
+
+.modern-dropdown:hover .modern-account-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-header {
+  padding: 1.5rem;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-color-dark) 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.dropdown-avatar {
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.dropdown-user-info h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem 0;
+}
+
+.dropdown-user-info p {
+  font-size: 0.85rem;
+  opacity: 0.9;
+  margin: 0;
+}
+
+.dropdown-content {
+  padding: 1rem;
+}
+
+.auth-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.btn-modern-login,
+.btn-modern-signup,
+.btn-user-action {
+  width: 100%;
+  padding: 1rem;
+  background: white;
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-modern-login:hover,
+.btn-modern-signup:hover,
+.btn-user-action:hover {
+  border-color: var(--primary-color);
+  box-shadow: 0 5px 15px rgba(10, 74, 122, 0.1);
+  transform: translateY(-1px);
+}
+
+.btn-modern-login {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  color: white;
+  border-color: #28a745;
+}
+
+.btn-modern-signup {
+  background: linear-gradient(135deg, #dc3545 0%, #fd7e14 100%);
+  color: white;
+  border-color: #dc3545;
+}
+
+.btn-icon {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.btn-modern-login .btn-icon,
+.btn-modern-signup .btn-icon {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.btn-user-action .btn-icon {
+  background: var(--extra-light);
+  color: var(--primary-color);
+}
+
+.btn-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.btn-title {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.btn-subtitle {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+.btn-arrow {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.1rem;
+  transition: transform 0.3s ease;
+}
+
+.btn-modern-login:hover .btn-arrow,
+.btn-modern-signup:hover .btn-arrow,
+.btn-user-action:hover .btn-arrow {
+  transform: translateX(3px);
+}
+
+.divider-mini {
+  text-align: center;
+  margin: 1rem 0;
+  position: relative;
+}
+
+.divider-mini::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #e9ecef, transparent);
+}
+
+.divider-mini span {
+  background: white;
+  padding: 0 1rem;
+  color: var(--text-light);
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.btn-google-dropdown {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  background: white;
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.btn-google-dropdown:hover {
+  border-color: #4285f4;
+  box-shadow: 0 5px 15px rgba(66, 133, 244, 0.15);
+  transform: translateY(-1px);
+}
+
+.google-icon-mini {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-logout {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-align: left;
+}
+
+.btn-logout:hover {
+  background: linear-gradient(135deg, #c82333 0%, #a71e2a 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 5px 15px rgba(220, 53, 69, 0.3);
+}
+
+.btn-logout .btn-icon {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Dark Mode Enhancements */
+body.dark-mode .account-trigger {
+  background: rgba(30, 30, 30, 0.8);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .account-trigger:hover {
+  background: rgba(30, 30, 30, 0.9);
+}
+
+body.dark-mode .modern-account-menu {
+  background: linear-gradient(145deg, #1e1e1e 0%, #2a2a2a 100%);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .btn-modern-login,
+body.dark-mode .btn-modern-signup,
+body.dark-mode .btn-user-action {
+  background: #2a2a2a;
+  border-color: #444;
   color: #f5f5f5;
 }
 
-body.dark-mode .dropdown-menu li:hover {
-  background-color: #2a2a2a;
+body.dark-mode .btn-modern-login:hover,
+body.dark-mode .btn-modern-signup:hover,
+body.dark-mode .btn-user-action:hover {
+  border-color: var(--primary-color);
+  background: #333;
+}
+
+body.dark-mode .btn-user-action .btn-icon {
+  background: #444;
+  color: var(--primary-color);
+}
+
+body.dark-mode .btn-google-dropdown {
+  background: #2a2a2a;
+  border-color: #444;
+  color: #f5f5f5;
+}
+
+body.dark-mode .btn-google-dropdown:hover {
+  border-color: #4285f4;
+  background: #333;
+}
+
+body.dark-mode .divider-mini::before {
+  background: linear-gradient(90deg, transparent, #444, transparent);
+}
+
+body.dark-mode .divider-mini span {
+  background: #1e1e1e;
+  color: #b0b0b0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .modern-account-menu {
+    right: -50px;
+    min-width: 280px;
+  }
+  
+  .dropdown-header {
+    padding: 1rem;
+  }
+  
+  .dropdown-content {
+    padding: 0.75rem;
+  }
+  
+  .btn-modern-login,
+  .btn-modern-signup,
+  .btn-user-action {
+    padding: 0.875rem;
+  }
 }
 
 /* add video */

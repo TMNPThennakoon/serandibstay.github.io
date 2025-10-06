@@ -132,7 +132,7 @@ function initializeEventListeners() {
         });
     }
 
-    // Login/Signup buttons in navigation
+    // Login/Signup buttons in navigation dropdown
     const loginBtn = document.getElementById('loginLink');
     if (loginBtn) {
         loginBtn.addEventListener('click', (e) => {
@@ -146,6 +146,32 @@ function initializeEventListeners() {
         signupBtn.addEventListener('click', (e) => {
             e.preventDefault();
             document.getElementById('signupModal').style.display = 'flex';
+        });
+    }
+
+    // Google Sign-in from dropdown
+    const googleDropdownBtn = document.getElementById('googleDropdownBtn');
+    if (googleDropdownBtn) {
+        googleDropdownBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            handleGoogleLogin();
+        });
+    }
+
+    // User menu buttons
+    const bookingsLink = document.getElementById('bookingsLink');
+    if (bookingsLink) {
+        bookingsLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            showMessage('My Bookings feature coming soon!', 'success');
+        });
+    }
+
+    const settingsLink = document.getElementById('settingsLink');
+    if (settingsLink) {
+        settingsLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            showMessage('Settings feature coming soon!', 'success');
         });
     }
 }
@@ -320,17 +346,21 @@ async function saveUserData(uid, userData) {
 
 // UI Functions
 function updateUI(user) {
-    const loginLink = document.getElementById('loginLink');
-    const signupLink = document.getElementById('signupLink');
+    const guestMenu = document.getElementById('guestMenu');
     const userMenu = document.getElementById('userMenu');
     const accountText = document.getElementById('accountText');
+    const dropdownUserName = document.getElementById('dropdownUserName');
+    const dropdownUserEmail = document.getElementById('dropdownUserEmail');
     
     if (user) {
         // User is logged in
-        if (loginLink) loginLink.style.display = 'none';
-        if (signupLink) signupLink.style.display = 'none';
+        if (guestMenu) guestMenu.style.display = 'none';
         if (userMenu) userMenu.style.display = 'block';
         if (accountText) accountText.textContent = user.displayName || 'Profile';
+        
+        // Update dropdown header
+        if (dropdownUserName) dropdownUserName.textContent = `Welcome back, ${user.displayName || 'User'}!`;
+        if (dropdownUserEmail) dropdownUserEmail.textContent = user.email;
         
         // Update profile modal
         const userDisplayName = document.getElementById('userDisplayName');
@@ -339,10 +369,13 @@ function updateUI(user) {
         if (userEmail) userEmail.textContent = user.email;
     } else {
         // User is not logged in
-        if (loginLink) loginLink.style.display = 'block';
-        if (signupLink) signupLink.style.display = 'block';
+        if (guestMenu) guestMenu.style.display = 'block';
         if (userMenu) userMenu.style.display = 'none';
         if (accountText) accountText.textContent = 'Account';
+        
+        // Reset dropdown header
+        if (dropdownUserName) dropdownUserName.textContent = 'Welcome to Serendib Stays';
+        if (dropdownUserEmail) dropdownUserEmail.textContent = 'Sign in to access your account';
     }
 }
 
